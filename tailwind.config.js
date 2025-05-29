@@ -6,20 +6,29 @@ export default withMT({
   theme: {
     extend: {
       colors: {
-        mint: {
-          light: '#e6fff7',  // very soft mint
-          DEFAULT: '#aaf0d1', // soft mint
-          dark: '#6ed7b0',    // deeper mint
+        primary: {
+          DEFAULT: '#7B2E2E', // Soft Maroon
         },
-        blue: {
-          light: '#e3f0ff',  // very soft blue
-          DEFAULT: '#8ecae6', // soft blue
-          dark: '#219ebc',    // deeper blue
+        accent: {
+          DEFAULT: '#A45D5D', // Dusty Rose
         },
-        gray: {
-          light: '#f7fafc',  // very light gray
-          DEFAULT: '#e2e8f0', // soft gray
-          dark: '#94a3b8',    // medium gray
+        highlight: {
+          DEFAULT: '#F6D776', // Soft Gold / Butter
+        },
+        sand: {
+          DEFAULT: '#FFF3C7', // Pastel Sand (Muted Yellow)
+        },
+        background: {
+          DEFAULT: '#FCFAF9', // Off White
+        },
+        surface: {
+          DEFAULT: '#F2F0EB', // Mist White
+        },
+        taupe: {
+          DEFAULT: '#B9B4A8', // Taupe Gray (Border/Text)
+        },
+        hover: {
+          DEFAULT: '#F2B263', // Muted Orange (Hover)
         },
       },
     },

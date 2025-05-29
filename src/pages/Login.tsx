@@ -18,13 +18,15 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-mint-light to-blue-light">
-      <div className="w-full max-w-md p-8 rounded-3xl shadow-2xl border border-blue-dark bg-white/70 backdrop-blur-lg relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sand to-background px-2 sm:px-4 md:px-8">
+
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl border border-taupe bg-surface/90 backdrop-blur-lg relative overflow-hidden transition-all duration-300">
+
         {/* Decorative Soft Avatar/Logo */}
         <div className="flex justify-center mb-6">
-          <div className="bg-mint-light rounded-full p-3 shadow-lg flex items-center justify-center">
+          <div className="bg-highlight rounded-full p-3 shadow-lg flex items-center justify-center">
             <svg
-              className="w-10 h-10 text-blue"
+              className="w-10 h-10 text-primary"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -36,27 +38,23 @@ const Login: React.FC = () => {
                 r="10"
                 stroke="currentColor"
                 strokeWidth="2"
-                fill="#8ecae6"
+                fill="#A45D5D"
               />
               <path
                 d="M12 14c-2.5 0-4 1.5-4 3v1h8v-1c0-1.5-1.5-3-4-3z"
-                fill="#e6fff7"
+                fill="#F6D776"
               />
-              <circle cx="12" cy="10" r="2.5" fill="#219ebc" />
+              <circle cx="12" cy="10" r="2.5" fill="#7B2E2E" />
             </svg>
           </div>
         </div>
-        <h2 className="text-3xl font-extrabold mb-2 text-center text-blue-dark tracking-tight">
-          Sign in to your account
-        </h2>
-        <p className="text-center text-gray-dark mb-6">
-          Welcome back! Please enter your details.
-        </p>
+        <h1 className="text-4xl font-extrabold mb-1 text-center text-primary tracking-tight">TTMM</h1>
+        <h2 className="text-xl font-semibold mb-6 text-center text-taupe">Sign in to your account</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="relative">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-dark mb-1"
+              className="block text-sm font-medium text-taupe mb-1"
             >
               Email
             </label>
@@ -91,7 +89,7 @@ const Login: React.FC = () => {
           <div className="relative">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-dark mb-1"
+              className="block text-sm font-medium text-taupe mb-1"
             >
               Password
             </label>
@@ -131,20 +129,20 @@ const Login: React.FC = () => {
           )}
           <button
             type="submit"
-            className="w-full py-2 bg-blue hover:bg-mint text-white font-semibold rounded-lg shadow-md transition transform hover:-translate-y-0.5 hover:shadow-lg focus:ring-2 focus:ring-blue-dark focus:outline-none"
+            className="w-full py-2 bg-accent hover:bg-hover text-white font-semibold rounded-lg shadow-md transition transform hover:-translate-y-0.5 hover:shadow-lg focus:ring-2 focus:ring-accent focus:outline-none"
           >
             Login
           </button>
         </form>
         {/* Divider for future SSO */}
         <div className="flex items-center my-6">
-          <div className="flex-grow border-t border-gray-light"></div>
-          <span className="mx-3 text-gray-dark text-xs">or</span>
-          <div className="flex-grow border-t border-gray-light"></div>
+          <div className="flex-grow border-t border-sand"></div>
+          <span className="mx-3 text-taupe text-xs">or</span>
+          <div className="flex-grow border-t border-sand"></div>
         </div>
         {/* Example SSO button (disabled for now) */}
         <button
-          className="w-full py-2 bg-gray-light text-gray-dark font-semibold rounded-lg shadow-sm cursor-not-allowed opacity-70 mb-4"
+          className="w-full py-2 bg-sand text-taupe font-semibold rounded-lg shadow-sm cursor-not-allowed opacity-70 mb-4"
           disabled
         >
           Continue with Google
@@ -152,13 +150,13 @@ const Login: React.FC = () => {
         <div className="flex justify-between items-center text-sm">
           <a
             href="#"
-            className="text-blue hover:text-mint hover:underline transition"
+            className="text-accent hover:text-hover hover:underline transition"
           >
             Forgot password?
           </a>
           <Link
             to="/signup"
-            className="text-gray-dark hover:text-blue hover:underline transition"
+            className="text-taupe hover:text-accent hover:underline transition"
           >
             Sign up
           </Link>
