@@ -4,10 +4,14 @@ import "./App.css";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ResponsiveLayout from "./layout/ResponsiveLayout";
+import NotFound from "./pages/NotFound";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 // Example placeholder Dashboard page
 const Dashboard = () => (
-  <div className="text-center text-2xl font-bold p-8">Welcome to the Dashboard!</div>
+  <div className="text-center text-2xl font-bold p-8">
+    Welcome to the Dashboard!
+  </div>
 );
 
 function App() {
@@ -15,22 +19,28 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-        {/* Login and Signup are standalone */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        {/* All other routes use ResponsiveLayout */}
-        <Route
-          path="/*"
-          element={
-            <ResponsiveLayout>
-              <Routes>
-                <Route path="dashboard" element={<Dashboard />} />
-                {/* Add more protected or main app routes here */}
-              </Routes>
-            </ResponsiveLayout>
-          }
-        />
-      </Routes>
+          {/* Login and Signup are standalone */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          {/* All other routes use ResponsiveLayout */}
+          <Route
+            path="/*"
+            element={
+              <ProtectedRoute>
+                <ResponsiveLayout>
+                  <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="dashboard" element={<Dashboard />} />
+                    {/* Add more protected or main app routes here */}
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </ResponsiveLayout>
+              </ProtectedRoute>
+            }
+          />
+          {/* Catch-all: show NotFound as a full-page for any unmatched route */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </BrowserRouter>
     </>
   );

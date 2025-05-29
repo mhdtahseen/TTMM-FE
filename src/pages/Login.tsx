@@ -1,27 +1,40 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const navigate = useNavigate();
+  const { Login } = useContext(AuthContext);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Add your login logic here
+
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
     }
     setError("");
     // Proceed with authentication...
+    try {
+      const success = await Login(email, password);
+      if (success) {
+        navigate("/");
+      }
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Login failed. Please try again."
+      );
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sand to-background px-2 sm:px-4 md:px-8">
-
       <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl border border-taupe bg-surface/90 backdrop-blur-lg relative overflow-hidden transition-all duration-300">
-
         {/* Decorative Soft Avatar/Logo */}
         <div className="flex justify-center mb-6">
           <div className="bg-highlight rounded-full p-3 shadow-lg flex items-center justify-center">
@@ -48,8 +61,12 @@ const Login: React.FC = () => {
             </svg>
           </div>
         </div>
-        <h1 className="text-4xl font-extrabold mb-1 text-center text-primary tracking-tight">TTMM</h1>
-        <h2 className="text-xl font-semibold mb-6 text-center text-taupe">Sign in to your account</h2>
+        <h1 className="text-4xl font-extrabold mb-1 text-center text-primary tracking-tight">
+          TTMM
+        </h1>
+        <h2 className="text-xl font-semibold mb-6 text-center text-taupe">
+          Sign in to your account
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="relative">
             <label
